@@ -10,7 +10,7 @@ const request = async (url) => {
 }
 
 export const api = {
-	fetchImage: async keyword => {
+	fetchCat: async keyword => {
 		const breeds = (await api.searchBreedByName(keyword)).map(breed => { return breed.id });
 		const requests = breeds.map(breed => {
 			return request(`${API_ENDPOINT}/images/search?limit=50&breed_ids=${breed}`);
@@ -25,7 +25,7 @@ export const api = {
 			return result;
 		})
 	},
-	fetchImageAll: () => {
+	fetchRandomCats: () => {
 		return request(`${API_ENDPOINT}/images/search?limit=50`)
 	},
 	searchBreedByName: keyword => {
